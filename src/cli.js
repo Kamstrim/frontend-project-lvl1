@@ -1,6 +1,3 @@
 import readlineSync from 'readline-sync';
 
-export const inputData = (quest) => {
-    return readlineSync.question(quest);
-}
-
+export default (quest) => readlineSync.question(quest);
