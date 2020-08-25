@@ -9,7 +9,7 @@ export default () => {
     const delIndex = getRandomIntInclusive(0, 9);
     const arr = [];
     arr[0] = number1;
-    for (let n = 1; n < 10; i += 1) {
+    for (let n = 1; n < 10; n += 1) {
       arr[n] = arr[n - 1] + number2;
     }
     const correctAnswer = arr[delIndex];
