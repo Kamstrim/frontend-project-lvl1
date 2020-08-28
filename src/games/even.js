@@ -2,6 +2,7 @@ import readlineSync from 'readline-sync';
 import { getRandomIntInclusive } from '../index.js';
 
 export default () => {
+  console.log('Answer %c"yes" %cif the number is even, otherwise answer %c"no".', 'color: red;', 'font-weight:bold', 'color: red');
   let i = 0;
   while (i !== 3) {
     const number = getRandomIntInclusive(1, 30);

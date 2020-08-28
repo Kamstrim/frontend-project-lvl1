@@ -2,6 +2,7 @@ import readlineSync from 'readline-sync';
 import { getRandomIntInclusive } from '../index.js';
 
 export default () => {
+  console.log('What is the result of the expression?');
   let i = 0;
   while (i !== 3) {
     const number1 = getRandomIntInclusive(1, 30);
