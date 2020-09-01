@@ -1,25 +1,20 @@
-import readlineSync from 'readline-sync';
-import { getRandomIntInclusive } from '../index.js';
+import { getRandomIntInclusive, inputName, inputAnswer, checkAnswer, finalText } from '../index.js';
 
 export default () => {
+  const name = inputName();
   console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
-  let i = 0;
-  while (i !== 3) {
-    const number1 = getRandomIntInclusive(1, 100);
-    console.log(`Question: ${number1}`);
-    const answer = readlineSync.question('Your answer: ');
+  let result = true;
+  const totalRound = 3;
+  for (let i = 0; (i < totalRound) && (result); i += 1) {
+    const number = getRandomIntInclusive(1, 100);
+    console.log(`Question: ${number}`);
+    const answer = inputAnswer();
     let n = 2;
     while (number1 % n !== 0) {
       n += 1;
     }
-    const correctAnswer = (n === number1) ? 'yes' : 'no';
-    if (answer === correctAnswer) {
-      console.log('Correct!');
-      i += 1;
-    } else {
-      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-      return false;
-    }
+    const correctAnswer = (n === number) ? 'yes' : 'no';
+    result = (checkAnswer(answer, correctAnswer));
   }
-  return true;
+finalText(result, name);
 };

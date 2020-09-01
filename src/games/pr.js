@@ -1,10 +1,11 @@
-import readlineSync from 'readline-sync';
-import { getRandomIntInclusive } from '../index.js';
+import { getRandomIntInclusive, inputName, inputAnswer, checkAnswer, finalText } from '../index.js';
 
 export default () => {
+  const name = inputName();
   console.log('What number is missing in the progression?');
-  let i = 0;
-  while (i !== 3) {
+  let result = true;
+  const totalRound = 3;
+  for (let i = 0; (i < totalRound) && (result); i += 1) {
     const number1 = getRandomIntInclusive(1, 30);
     const number2 = getRandomIntInclusive(1, 30);
     const delIndex = getRandomIntInclusive(0, 9);
@@ -16,14 +17,8 @@ export default () => {
     const correctAnswer = arr[delIndex];
     arr[delIndex] = '..';
     console.log(`Question: ${arr}`);
-    const answer = readlineSync.question('Your answer: ');
-    if (Number(answer) === correctAnswer) {
-      console.log('Correct!');
-      i += 1;
-    } else {
-      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-      return false;
-    }
+    const answer = inputAnswer();
+    result = (checkAnswer(Number(answer), correctAnswer));
   }
-  return true;
+finalText(result, name);
 };

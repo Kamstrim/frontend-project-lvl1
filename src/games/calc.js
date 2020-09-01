@@ -1,31 +1,30 @@
-import readlineSync from 'readline-sync';
-import { getRandomIntInclusive } from '../index.js';
+import { getRandomIntInclusive, inputName, inputAnswer, checkAnswer, finalText } from '../index.js';
 
 export default () => {
+  const name = inputName();
   console.log('What is the result of the expression?');
-  let i = 0;
-  while (i !== 3) {
+  let result = true;
+  const totalRound = 3;
+  for (let i = 0; (i < totalRound) && (result); i += 1) {
     const number1 = getRandomIntInclusive(1, 30);
     const number2 = getRandomIntInclusive(1, 30);
     const logicalExp = ['-', '+', '*'];
-    const rand = getRandomIntInclusive(0, 2);
-    console.log(`Question: ${number1} ${logicalExp[rand]} ${number2}`);
-    const answer = readlineSync.question('Your answer: ');
+    const randExp = getRandomIntInclusive(0, 2);
+    console.log(`Question: ${number1} ${logicalExp[randExp]} ${number2}`);
+    const answer = inputAnswer();
     let correctAnswer = 0;
-    if (rand === 0) {
-      correctAnswer = number1 - number2;
-    } else if (rand === 1) {
-      correctAnswer = number1 + number2;
-    } else {
-      correctAnswer = number1 * number2;
+    switch(randExp) {
+      case 0:
+        correctAnswer = number1 - number2;
+        break;
+      case 1:
+        correctAnswer = number1 + number2;
+        break;
+      case 2:
+       correctAnswer = number1 * number2;
+       break;
     }
-    if (Number(answer) === correctAnswer) {
-      console.log('Correct!');
-      i += 1;
-    } else {
-      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-      return false;
-    }
+    result = (checkAnswer(Number(answer), correctAnswer));
   }
-  return true;
+finalText(result, name);
 };

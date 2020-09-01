@@ -1,21 +1,16 @@
-import readlineSync from 'readline-sync';
-import { getRandomIntInclusive } from '../index.js';
+import { getRandomIntInclusive, inputName, inputAnswer, checkAnswer, finalText } from '../index.js';
 
 export default () => {
-  console.log('Answer %c"yes" %cif the number is even, otherwise answer %c"no".', 'color: red;', 'font-weight:bold', 'color: red');
-  let i = 0;
-  while (i !== 3) {
+  const name = inputName();
+  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  let result = true;
+  const totalRound = 3;
+  for (let i = 0; (i < totalRound) && (result); i += 1) {
     const number = getRandomIntInclusive(1, 30);
     console.log(`Question: ${number}`);
-    const answer = readlineSync.question('Your answer: ');
+    const answer = inputAnswer();
     const correctAnswer = ((number % 2) === 0) ? 'yes' : 'no';
-    if (answer === correctAnswer) {
-      console.log('Correct!');
-      i += 1;
-    } else {
-      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-      return false;
-    }
+    result = (checkAnswer(answer, correctAnswer));
   }
-  return true;
+  finalText(result, name);
 };
