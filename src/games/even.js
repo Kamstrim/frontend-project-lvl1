@@ -1,4 +1,11 @@
-import { getRandomIntInclusive, inputName, inputAnswer, checkAnswer, finalText } from '../index.js';
+import {
+  getRandomIntInclusive,
+  inputName,
+  inputAnswer,
+  checkAnswer,
+  finalText,
+}
+  from '../index.js';
 
 export default () => {
   const name = inputName();

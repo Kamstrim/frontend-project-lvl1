@@ -1,4 +1,11 @@
-import { getRandomIntInclusive, inputName, inputAnswer, checkAnswer, finalText } from '../index.js';
+import {
+  getRandomIntInclusive,
+  inputName,
+  inputAnswer,
+  checkAnswer,
+  finalText,
+}
+  from '../index.js';
 
 export default () => {
   const name = inputName();
@@ -13,18 +20,18 @@ export default () => {
     console.log(`Question: ${number1} ${logicalExp[randExp]} ${number2}`);
     const answer = inputAnswer();
     let correctAnswer = 0;
-    switch(randExp) {
+    switch (randExp) {
       case 0:
         correctAnswer = number1 - number2;
         break;
       case 1:
         correctAnswer = number1 + number2;
         break;
-      case 2:
-       correctAnswer = number1 * number2;
-       break;
+      default:
+        correctAnswer = number1 * number2;
+        break;
     }
     result = (checkAnswer(Number(answer), correctAnswer));
   }
-finalText(result, name);
+  finalText(result, name);
 };

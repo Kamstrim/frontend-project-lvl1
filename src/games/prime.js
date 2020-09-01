@@ -1,4 +1,11 @@
-import { getRandomIntInclusive, inputName, inputAnswer, checkAnswer, finalText } from '../index.js';
+import {
+  getRandomIntInclusive,
+  inputName,
+  inputAnswer,
+  checkAnswer,
+  finalText,
+}
+  from '../index.js';
 
 export default () => {
   const name = inputName();
@@ -10,11 +17,11 @@ export default () => {
     console.log(`Question: ${number}`);
     const answer = inputAnswer();
     let n = 2;
-    while (number1 % n !== 0) {
+    while (number % n !== 0) {
       n += 1;
     }
     const correctAnswer = (n === number) ? 'yes' : 'no';
     result = (checkAnswer(answer, correctAnswer));
   }
-finalText(result, name);
+  finalText(result, name);
 };

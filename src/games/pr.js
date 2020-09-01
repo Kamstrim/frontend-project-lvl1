@@ -1,4 +1,11 @@
-import { getRandomIntInclusive, inputName, inputAnswer, checkAnswer, finalText } from '../index.js';
+import {
+  getRandomIntInclusive,
+  inputName,
+  inputAnswer,
+  checkAnswer,
+  finalText,
+}
+  from '../index.js';
 
 export default () => {
   const name = inputName();
@@ -20,5 +27,5 @@ export default () => {
     const answer = inputAnswer();
     result = (checkAnswer(Number(answer), correctAnswer));
   }
-finalText(result, name);
+  finalText(result, name);
 };
