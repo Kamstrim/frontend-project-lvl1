@@ -1,27 +1,18 @@
-import {
-  getRandomIntInclusive,
-  inputName,
-  inputAnswer,
-  checkAnswer,
-  finalText,
-}
-  from '../index.js';
+import { getRandomIntInclusive, game } from '../index.js';
 
 export default () => {
-  const name = inputName();
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
-  let result = true;
+  const textGame = 'Answer "yes" if given number is prime. Otherwise answer "no".';
   const totalRound = 3;
-  for (let i = 0; (i < totalRound) && (result); i += 1) {
+  const question = [];
+  const correctAnswer = [];
+  for (let i = 0; i < totalRound; i += 1) {
     const number = getRandomIntInclusive(1, 100);
-    console.log(`Question: ${number}`);
-    const answer = inputAnswer();
+    question[i] = `Question: ${number}`;
     let n = 2;
     while (number % n !== 0) {
       n += 1;
     }
-    const correctAnswer = (n === number) ? 'yes' : 'no';
-    result = (checkAnswer(answer, correctAnswer));
+    correctAnswer[i] = (n === number) ? 'yes' : 'no';
   }
-  finalText(result, name);
+  game(textGame, totalRound, question, correctAnswer);
 };

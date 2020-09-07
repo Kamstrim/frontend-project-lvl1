@@ -1,28 +1,19 @@
-import {
-  getRandomIntInclusive,
-  inputName,
-  inputAnswer,
-  checkAnswer,
-  finalText,
-}
-  from '../index.js';
+import { getRandomIntInclusive, game } from '../index.js';
 
 export default () => {
-  const name = inputName();
-  console.log('Find the greatest common divisor of given numbers.');
-  let result = true;
+  const textGame = 'Find the greatest common divisor of given numbers.';
   const totalRound = 3;
-  for (let i = 0; (i < totalRound) && (result); i += 1) {
+  const question = [];
+  const correctAnswer = [];
+  for (let i = 0; i < totalRound; i += 1) {
     const number1 = getRandomIntInclusive(1, 30);
     const number2 = getRandomIntInclusive(1, 30);
-    console.log(`Question: ${number1} ${number2}`);
-    const answer = inputAnswer();
+    question[i] = `Question: ${number1} ${number2}`;
     let nod = (number1 <= number2) ? number1 : number2;
     while ((number1 % nod) || (number2 % nod) !== 0) {
       nod -= 1;
     }
-    const correctAnswer = nod;
-    result = (checkAnswer(Number(answer), correctAnswer));
+    correctAnswer[i] = String(nod);
   }
-  finalText(result, name);
+  game(textGame, totalRound, question, correctAnswer);
 };

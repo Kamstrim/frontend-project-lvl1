@@ -1,6 +1,6 @@
 import inputData from './cli.js';
 
-export const inputName = (text) => {
+export const inputName = () => {
   console.log('Welcome to the Brain Games!');
   const name = inputData('May I have your name? ');
   console.log(`Hello, ${name}!`);
@@ -35,17 +35,14 @@ export const finalText = (result, name) => {
   }
 };
 
-export const even = () => {
+export const game = (textGame, totalRound, question, correctAnswer) => {
   const name = inputName();
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  console.log(textGame);
   let result = true;
-  const totalRound = 3;
   for (let i = 0; (i < totalRound) && (result); i += 1) {
-    const number = getRandomIntInclusive(1, 30);
-    console.log(`Question: ${number}`);
+    console.log(question[i]);
     const answer = inputAnswer();
-    const correctAnswer = ((number % 2) === 0) ? 'yes' : 'no';
-    result = (checkAnswer(answer, correctAnswer));
+    result = (checkAnswer(answer, correctAnswer[i]));
   }
   return finalText(result, name);
 };
