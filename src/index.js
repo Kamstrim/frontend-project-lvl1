@@ -44,5 +44,5 @@ export const game = (textGame, totalRound, question, correctAnswer) => {
     const answer = inputAnswer();
     result = (checkAnswer(answer, correctAnswer[i]));
   }
-  return finalText(result, name);
+  finalText(result, name);
 };
