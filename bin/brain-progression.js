@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import check from '../src/games/pr.js';
+import startGame from '../src/games/pr.js';
 
-check();
+startGame();

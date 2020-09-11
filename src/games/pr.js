@@ -1,22 +1,24 @@
-import { getRandomIntInclusive, game } from '../index.js';
+import game from '../index.js';
+import { getRandomIntInclusive } from '../storeFunction.js';
 
 export default () => {
   const textGame = 'What number is missing in the progression?';
   const totalRound = 3;
-  const question = [];
-  const correctAnswer = [];
+  const introductory = []; // ['question','correctAnswer']
+  const arr = [];
+  const lengthArr = 10;
   for (let i = 0; i < totalRound; i += 1) {
     const number1 = getRandomIntInclusive(1, 30);
     const number2 = getRandomIntInclusive(1, 30);
-    const delIndex = getRandomIntInclusive(0, 9);
-    const arr = [];
+    const delIndex = getRandomIntInclusive(0, (lengthArr - 1));
     arr[0] = number1;
-    for (let n = 1; n < 10; n += 1) {
+    for (let n = 1; n < lengthArr; n += 1) {
       arr[n] = arr[n - 1] + number2;
     }
-    correctAnswer[i] = String(arr[delIndex]);
+    introductory[i] = [];
+    introductory[i][1] = arr[delIndex];
     arr[delIndex] = '..';
-    question[i] = `Question: ${arr}`;
+    introductory[i][0] = `${arr}`;
   }
-  game(textGame, totalRound, question, correctAnswer);
+  game(textGame, introductory);
 };

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import check from '../src/games/nod.js';
+import startGame from '../src/games/nod.js';
 
-check();
+startGame();
