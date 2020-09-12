@@ -1,5 +1,5 @@
 import game from '../index.js';
-import { getRandomIntInclusive } from '../storeFunction.js';
+import getRandomIntInclusive from '../storeFunction.js';
 
 const primeNumber = (num) => {
   let n = 2;

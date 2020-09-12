@@ -1,5 +1,5 @@
 import game from '../index.js';
-import { getRandomIntInclusive } from '../storeFunction.js';
+import getRandomIntInclusive from '../storeFunction.js';
 
 export default () => {
   const textGame = 'What is the result of the expression?';

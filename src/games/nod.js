@@ -1,5 +1,5 @@
 import game from '../index.js';
-import { getRandomIntInclusive } from '../storeFunction.js';
+import getRandomIntInclusive from '../storeFunction.js';
 
 const nod = (num1, num2) => {
   let result = (num1 <= num2) ? num1 : num2;
