@@ -1,24 +1,28 @@
-import game from '../index.js';
+import { playGame, getRound } from '../index.js';
 import getRandomIntInclusive from '../storeFunction.js';
 
 export default () => {
-  const textGame = 'What number is missing in the progression?';
-  const totalRound = 3;
-  const introductory = []; // ['question','correctAnswer']
-  const arr = [];
-  const lengthArr = 10;
-  for (let i = 0; i < totalRound; i += 1) {
+  const questionGame = 'What number is missing in the progression?';
+  const roundCount = getRound();
+  const initialQuestionsAnswers = []; // ['question','correctAnswer']
+  const numbers = [];
+  const lenNumbers = 10;
+  let question = '';
+  let correctAnswer = '';
+  for (let i = 0; i < roundCount; i += 1) {
     const number1 = getRandomIntInclusive(1, 30);
     const number2 = getRandomIntInclusive(1, 30);
-    const delIndex = getRandomIntInclusive(0, (lengthArr - 1));
-    arr[0] = number1;
-    for (let n = 1; n < lengthArr; n += 1) {
-      arr[n] = arr[n - 1] + number2;
+    const delIndex = getRandomIntInclusive(0, (lenNumbers - 1));
+    numbers[0] = number1;
+    for (let n = 1; n < lenNumbers; n += 1) {
+      numbers[n] = numbers[n - 1] + number2;
     }
-    introductory[i] = [];
-    introductory[i][1] = arr[delIndex];
-    arr[delIndex] = '..';
-    introductory[i][0] = `${arr}`;
+    correctAnswer = numbers[delIndex];
+    numbers[delIndex] = '..';
+    question = `${numbers}`;
+    initialQuestionsAnswers[i] = [];
+    initialQuestionsAnswers[i][0] = question;
+    initialQuestionsAnswers[i][1] = String(correctAnswer);
   }
-  game(textGame, introductory);
+  playGame(questionGame, initialQuestionsAnswers);
 };
