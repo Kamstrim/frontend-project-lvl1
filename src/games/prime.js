@@ -1,8 +1,8 @@
-import { playGame, getRound } from '../index.js';
+import { playGame, roundsCount } from '../index.js';
 import getRandomIntInclusive from '../rnd.js';
 
 const isPrime = (num) => {
-  if (num < 3) {
+  if (num < 2) {
     return false;
   }
   for (let n = 2; n < num / 2; n += 1) {
@@ -14,13 +14,12 @@ const isPrime = (num) => {
 };
 
 export default () => {
-  const questionGame = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-  const roundsCount = getRound;
-  const questionsAnswers = []; // ['question','correctAnswer']
+  const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+  const answersQuestions = []; // ['question','correctAnswer']
   for (let i = 0; i < roundsCount; i += 1) {
     const question = getRandomIntInclusive(1, 100);
     const correctAnswer = (isPrime(question)) ? 'yes' : 'no';
-    questionsAnswers[i] = [question, correctAnswer];
+    answersQuestions[i] = [question, correctAnswer];
   }
-  playGame(questionGame, questionsAnswers);
+  playGame(gameDescription, answersQuestions);
 };

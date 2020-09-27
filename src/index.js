@@ -1,13 +1,12 @@
 import inputData from './cli.js';
 
-export const getRound = 3;
+export const roundsCount = 3;
 
 export const playGame = (questionGame, dataGame) => {
   console.log('Welcome to the Brain Games!');
-  const namePlayer = inputData('May I have your name? ');
-  console.log(`Hello, ${namePlayer}!`);
+  const playerName = inputData('May I have your name? ');
+  console.log(`Hello, ${playerName}!`);
   console.log(questionGame);
-  const roundsCount = getRound;
   for (let i = 0; i < roundsCount; i += 1) {
     const [question, correctAnswer] = dataGame[i];
     console.log(`Question: ${question}`);
@@ -16,9 +15,9 @@ export const playGame = (questionGame, dataGame) => {
       console.log('Correct!');
     } else {
       console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-      console.log(`Let's try again, ${namePlayer}!`);
+      console.log(`Let's try again, ${playerName}!`);
       return;
     }
   }
-  console.log(`Congratulations, ${namePlayer}!`);
+  console.log(`Congratulations, ${playerName}!`);
 };

@@ -1,18 +1,17 @@
-import { playGame, getRound } from '../index.js';
+import { playGame, roundsCount } from '../index.js';
 import getRandomIntInclusive from '../rnd.js';
 
 export default () => {
-  const questionGame = 'What is the result of the expression?';
-  const roundsCount = getRound;
+  const gameDescription = 'What is the result of the expression?';
   const operations = ['-', '+', '*'];
-  const questionsAnswers = []; // ['question','correctAnswer']
+  const answersQuestions = []; // ['question','correctAnswer']
   for (let i = 0; i < roundsCount; i += 1) {
     const number1 = getRandomIntInclusive(1, 30);
     const number2 = getRandomIntInclusive(1, 30);
-    const operation = operations[getRandomIntInclusive(0, (operations.length - 1))];
-    const question = `${number1} ${operation} ${number2}`;
+    const randomOpertation = operations[getRandomIntInclusive(0, (operations.length - 1))];
+    const question = `${number1} ${randomOpertation} ${number2}`;
     let correctAnswer = '';
-    switch (operation) {
+    switch (randomOpertation) {
       case '-':
         correctAnswer = number1 - number2;
         break;
@@ -23,10 +22,9 @@ export default () => {
         correctAnswer = number1 * number2;
         break;
       default:
-        console.log('Operation it not Correct');
-        break;
+        throw new Error(`Unknown operation: '${randomOpertation}'!`);
     }
-    questionsAnswers[i] = [question, String(correctAnswer)];
+    answersQuestions[i] = [question, String(correctAnswer)];
   }
-  playGame(questionGame, questionsAnswers);
+  playGame(gameDescription, answersQuestions);
 };
