@@ -9,7 +9,7 @@ export default () => {
   for (let i = 0; i < roundsCount; i += 1) {
     const progressionFirstNumber = getRandomIntInclusive(1, 30);
     const progressionStep = getRandomIntInclusive(1, 30);
-    const progressionDelIndex = getRandomIntInclusive(0, (progressionLength- 1));
+    const progressionDelIndex = getRandomIntInclusive(0, (progressionLength - 1));
     for (let n = 0; n < (progressionLength - 1); n += 1) {
       progression[n] = progressionFirstNumber + progressionStep * n;
     }
