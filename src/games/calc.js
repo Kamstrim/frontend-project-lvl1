@@ -1,5 +1,5 @@
 import { playGame, roundsCount } from '../index.js';
-import getRandomIntInclusive from '../rnd.js';
+import getRandomIntInclusive from '../randomIntInclusive.js';
 
 export default () => {
   const gameDescription = 'What is the result of the expression?';
@@ -10,7 +10,7 @@ export default () => {
     const number2 = getRandomIntInclusive(1, 30);
     const randomOpertation = operations[getRandomIntInclusive(0, (operations.length - 1))];
     const question = `${number1} ${randomOpertation} ${number2}`;
-    let correctAnswer = '';
+    let correctAnswer;
     switch (randomOpertation) {
       case '-':
         correctAnswer = number1 - number2;

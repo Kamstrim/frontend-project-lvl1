@@ -1,5 +1,5 @@
 import { playGame, roundsCount } from '../index.js';
-import getRandomIntInclusive from '../rnd.js';
+import getRandomIntInclusive from '../randomIntInclusive.js';
 
 export default () => {
   const gameDescription = 'Answer "yes" if the number is even, otherwise answer "no".';

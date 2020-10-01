@@ -1,5 +1,5 @@
 import { playGame, roundsCount } from '../index.js';
-import getRandomIntInclusive from '../rnd.js';
+import getRandomIntInclusive from '../randomIntInclusive.js';
 
 const getGcd = (num1, num2) => {
   let result = (num1 <= num2) ? num1 : num2;

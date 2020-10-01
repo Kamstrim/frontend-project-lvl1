@@ -1,5 +1,5 @@
 import { playGame, roundsCount } from '../index.js';
-import getRandomIntInclusive from '../rnd.js';
+import getRandomIntInclusive from '../randomIntInclusive.js';
 
 const isPrime = (num) => {
   if (num < 2) {
